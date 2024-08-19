@@ -1,6 +1,6 @@
 from langchain_community.document_loaders import CSVLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
+from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chains import create_qa_with_sources_chain
@@ -196,7 +196,7 @@ def chatbot():
                     elif severity.lower() == "low":
             #         # Provide temporary relieving solutions
                         result = retrieval_qa({
-                        "question": f"Give 2 correct temporary relieving solutions to the {symptoms} provided",
+                        "question": f"Give 2 temporary relieving solutions to the {symptoms} provided",
                         "chat_history": []
                     })
                         with st.chat_message(name="assistant"):
